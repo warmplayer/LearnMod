@@ -1,92 +1,92 @@
-# This is an example neoforge.mods.toml file. It contains the data relating to the loading mods.
-# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
-# The overall format is standard TOML format, v0.5.0.
-# Note that there are a couple of TOML lists in this file.
-# Find more information on toml format here:  https://github.com/toml-lang/toml
-# The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
+# 这是一个示例 neoforge.mods.toml 文件。它包含与加载 mod 相关的数据。
+# 有几个必填字段 （#mandatory），还有更多字段是可选的 （#optional）。
+# 整体格式为标准 TOML 格式，v0.5.0。
+# 请注意，此文件中有几个 TOML 列表。
+# 在此处查找有关 toml 格式的更多信息：https://github.com/toml-lang/toml
+# 要加载的 Mod 加载器类型的名称 - 对于常规的 FML @Mod Mod，它应该是 javafml
 modLoader="javafml" #mandatory
 
-# A version range to match for said mod loader - for regular FML @Mod it will be the FML version. This is currently 2.
+# 与所述 mod loader 匹配的版本范围 - 对于常规 FML @Mod它将是 FML 版本。目前为 2。
 loaderVersion="${loader_version_range}" #mandatory
 
-# The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
-# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+# 你的 Mod 的许可证。这是强制性元数据，可以更轻松地理解 redistributive properties。
+# 在 https://choosealicense.com/ 查看您的选项。保留所有权利是默认的版权立场，因此是此处的默认立场。
 license="${mod_license}"
 
-# A URL to refer people to when problems occur with this mod
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+# 当此 Mod 出现问题时，供人们参考的 URL
+#issueTrackerURL=“https://change.me.to.your.issue.tracker.example.invalid/” #optional
 
-# A list of mods - how many allowed here is determined by the individual mod loader
+# Mod 列表 - 这里允许的数量由各个 Mod 加载器决定
 [[mods]] #mandatory
 
-# The modid of the mod
+# Mod 的 modid
 modId="${mod_id}" #mandatory
 
-# The version number of the mod
+# Mod 的版本号
 version="${mod_version}" #mandatory
 
-# A display name for the mod
+# Mod 的显示名称
 displayName="${mod_name}" #mandatory
 
-# A URL to query for updates for this mod. See the JSON update specification https://docs.neoforged.net/docs/misc/updatechecker/
-#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+# 查询此 Mod 更新的 URL。请参阅 JSON 更新规范 https://docs.neoforged.net/docs/misc/updatechecker/
+#updateJSONURL=“https://change.me.example.invalid/updates.json” #optional
 
-# A URL for the "homepage" for this mod, displayed in the mod UI
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+# 此 Mod 的 “主页” 的 URL，显示在 Mod UI 中
+#displayURL=“https://change.me.to.your.mods.homepage.example.invalid/” #optional
 
-# A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="examplemod.png" #optional
+# 包含用于显示的徽标的文件名（在 mod JAR 的根目录中）
+#logoFile=“examplemod.png” #optional
 
-# A text field displayed in the mod UI
-#credits="" #optional
+# 在 Mod UI 中显示的文本字段
+#credits=“” #optional
 
-# A text field displayed in the mod UI
+# 在 Mod UI 中显示的文本字段
 authors="${mod_authors}" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''${mod_description}'''
 
-# The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
-#[[mixins]]
-#config="${mod_id}.mixins.json"
+# [[mixins]] 块允许你向 FML 声明你的 mixin 配置，以便它被加载。
+#[[混入]]
+#config=“${mod_id}.mixins.json”
 
-# The [[accessTransformers]] block allows you to declare where your AT file is.
-# If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
+# [[accessTransformers]] 块允许你声明你的 AT 文件在哪里。
+# 如果省略此块，将进行回退尝试以从 META-INF/accesstransformer.cfg 加载 AT
 #[[accessTransformers]]
-#file="META-INF/accesstransformer.cfg"
+#file=“META-INF/accesstransformer.cfg”
 
-# The coremods config file path is not configurable and is always loaded from META-INF/coremods.json
+# coremods 配置文件路径是不可配置的，总是从 META-INF/coremods.json 加载
 
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+# 依赖项 - 使用 .来指示特定 modid 的依赖关系。依赖项是可选的。
 [[dependencies.${mod_id}]] #optional
-    # the modid of the dependency
-    modId="neoforge" #mandatory
-    # The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case insensitive).
-    # 'required' requires the mod to exist, 'optional' does not
-    # 'incompatible' will prevent the game from loading when the mod exists, and 'discouraged' will show a warning
+    # 依赖的 modid
+    modId="neoforge" #强制性
+   # 依赖项的类型。可以是 “required”、“optional”、“incompatible” 或 “discouraged” 之一（不区分大小写）。
+    # 'required' 需要 mod 存在，'optional' 不需要
+    # 'incompatible' 将在 Mod 存在时阻止游戏加载，而 'discouraged' 将显示警告
     type="required" #mandatory
-    # Optional field describing why the dependency is required or why it is incompatible
-    # reason="..."
-    # The version range of the dependency
+    # 描述为什么需要依赖项或为什么不兼容的可选字段
+    # reason=“...”
+    # 依赖的版本范围
     versionRange="${neo_version_range}" #mandatory
-    # An ordering relationship for the dependency.
-    # BEFORE - This mod is loaded BEFORE the dependency
-    # AFTER - This mod is loaded AFTER the dependency
+    # 依赖项的排序关系。
+    # BEFORE - 这个 mod 在依赖之前加载
+    # AFTER - 这个 mod 在依赖之后加载
     ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT, or SERVER
+   # 应用此依赖项的一侧 - BOTH、CLIENT 或 SERVER
     side="BOTH"
 
-# Here's another dependency
+# 这是另一个依赖项
 [[dependencies.${mod_id}]]
     modId="minecraft"
     type="required"
-    # This version range declares a minimum of the current minecraft version up to but not including the next major version
+    # 此版本范围声明了当前 minecraft 版本的最低版本，但不包括下一个主要版本
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 
-# Features are specific properties of the game environment, that you may want to declare you require. This example declares
-# that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
-# stop your mod loading on the server for example.
+# 功能是游戏环境的特定属性，您可能希望声明您需要。此示例声明
+# 你的 Mod 需要 GL 版本 3.2 或更高版本。将添加其他功能。他们是有侧面意识的，所以宣布这个不会
+# 例如，在服务器上停止你的 Mod 加载。
 #[features.${mod_id}]
-#openGLVersion="[3.2,)"
+#openGLVersion=“[3.2，）”
